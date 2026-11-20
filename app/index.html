@@ -3,23 +3,118 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
+<title>GTA VI Trophy Guide &amp; Tracker — 55 PS5 Trophies to Platinum</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<header class="hero">
+  <div class="hero-inner">
+    <p class="kicker">GRAND THEFT AUTO VI &middot; PLAYSTATION 5 &middot; OFFLINE GUIDE &amp; TRACKER</p>
+    <h1>Leonida Trophy Guide</h1>
+    <p class="sub">All 55 official trophies — names, descriptions and grades as PlayStation publishes them — each with a guide in our own words that cites its sources, a roadmap to the platinum, and a tracker that saves in your browser.</p>
+    <div class="progress-wrap">
+      <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+      <p id="progressText" class="progress-text">0 of 55 earned</p>
+    </div>
+    <p class="facts">1 Platinum &middot; 2 Gold &middot; 6 Silver &middot; 46 Bronze &middot; 28 hidden &middot; 0 online &middot; ~200 hours to platinum &middot; 1 playthrough &middot; cheats disable trophies</p>
+  </div>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
+
+<nav class="tabs" aria-label="Sections">
+  <button type="button" class="tab active" data-tab="checklist">Checklist</button>
+  <button type="button" class="tab" data-tab="guide">Guide</button>
+  <button type="button" class="tab" data-tab="roadmap">Roadmap</button>
+  <button type="button" class="tab" data-tab="sources">Sources</button>
+</nav>
+
+<section class="controls" aria-label="Tracker controls">
+  <label class="search">Search <input id="search" type="search" placeholder="Trophy name, mission, activity&hellip;" autocomplete="off"></label>
+  <div class="chips" id="kindChips" role="group" aria-label="Filter by kind">
+    <button type="button" class="chip active" data-kind="all">All 55</button>
+    <button type="button" class="chip" data-kind="story">Story</button>
+    <button type="button" class="chip" data-kind="missable">Missable</button>
+    <button type="button" class="chip" data-kind="collectibles">Collectibles</button>
+    <button type="button" class="chip" data-kind="activities">Activities</button>
+    <button type="button" class="chip" data-kind="online">Online</button>
+  </div>
+  <label class="grade">Grade
+    <select id="grade">
+      <option value="all">All grades</option>
+      <option value="platinum">Platinum</option>
+      <option value="gold">Gold</option>
+      <option value="silver">Silver</option>
+      <option value="bronze">Bronze</option>
+    </select>
+  </label>
+  <label class="toggle"><input id="spoilers" type="checkbox"> Hide spoilers (story names &amp; descriptions stay hidden until earned)</label>
+  <label class="toggle"><input id="hideEarned" type="checkbox"> Hide earned</label>
+  <div class="io">
+    <button id="export" type="button">Export progress</button>
+    <label class="import">Import progress <input id="import" type="file" accept="application/json,.json"></label>
+    <button id="reset" type="button">Reset</button>
+  </div>
+  <p id="ioStatus" class="io-status" role="status"></p>
+</section>
+
+<main>
+  <section id="view-checklist" class="view">
+    <p id="emptyOnline" class="callout" hidden>There are no online trophies in GTA 6 — all 55 are earned offline in single-player. (Source: PowerPyx roadmap: Online Trophies 0.)</p>
+    <p id="emptyMissable" class="callout" hidden>Only one trophy is possibly missable. See the Roadmap tab for the Chapter 1 warning.</p>
+    <p id="emptyNone" class="callout" hidden>No trophies match these filters.</p>
+    <ul id="rows" class="cards"></ul>
+  </section>
+
+  <section id="view-guide" class="view" hidden>
+    <p class="view-intro">Every guide is written in our own words for this entry. A specific location or step is only as good as its source, so each guide names where its facts come from — open a trophy to read its guide and its sources.</p>
+    <div id="guideList" class="accordion"></div>
+  </section>
+
+  <section id="view-roadmap" class="view" hidden>
+    <div class="callout danger">
+      <strong>Missable warning — read first.</strong> Only one trophy is possibly missable:
+      <strong>Positive Mental Attitude</strong> (meditate at every spot). After the Chapter 1 mission
+      <em>Down to Earth</em>, talk to Lucia in the kitchen at Jason&rsquo;s house in the morning, follow her to
+      the balcony and choose Accept. That meditation vanishes after Chapter 1, and it is still unconfirmed
+      whether it is required — PowerPyx&rsquo;s author did it and then earned the trophy, so do it to be safe.
+      Everything else can be done after the story in free-roam. Sources: PowerPyx, GTABase, KeenGamer.
+    </div>
+    <ol class="timeline" id="timeline"></ol>
+    <h2>Collectibles &amp; counts the roadmap is built on</h2>
+    <table class="counts">
+      <thead><tr><th>What</th><th>Count for the trophy</th><th>Count for 100%</th></tr></thead>
+      <tbody>
+        <tr><td>Stunts</td><td>250 of 397</td><td>300</td></tr>
+        <tr><td>Shooting Range gold medals</td><td>42 (all)</td><td>42 (all)</td></tr>
+        <tr><td>Top Fun drone race locations</td><td>14 (all)</td><td>14 (all)</td></tr>
+        <tr><td>Races won</td><td>20 different</td><td>&mdash;</td></tr>
+        <tr><td>Meditation spots</td><td>18</td><td>15 of 18</td></tr>
+        <tr><td>Collectible card sets</td><td>3 of 18</td><td>&mdash;</td></tr>
+        <tr><td>WAiNK locations</td><td>100</td><td>&mdash;</td></tr>
+        <tr><td>Challenges</td><td>50 of 80</td><td>70 of 80</td></tr>
+        <tr><td>Vehicles discovered</td><td>100</td><td>200 of 277 base models</td></tr>
+        <tr><td>Bank vaults robbed</td><td>5 of 8</td><td>8 (all)</td></tr>
+        <tr><td>Illegal gang operations</td><td>1 per gang (9 gangs)</td><td>39 (all)</td></tr>
+        <tr><td>Garages purchased</td><td>8 ($160,000 total)</td><td>&mdash;</td></tr>
+        <tr><td>Vehicles registered (Scooter Bros)</td><td>10</td><td>&mdash;</td></tr>
+        <tr><td>Marked Bills laundered</td><td>$250,000</td><td>&mdash;</td></tr>
+        <tr><td>Spent across shops</td><td>$100,000</td><td>&mdash;</td></tr>
+        <tr><td>Criminal Profile actions</td><td>500</td><td>&mdash;</td></tr>
+      </tbody>
+    </table>
+    <p class="fineprint">Counts: PowerPyx trophy guide &amp; roadmap and 100% completion checklist. Story chapters and missions are from the official trophy descriptions; every story trophy is unmissable (PowerPyx).</p>
+  </section>
+
+  <section id="view-sources" class="view" hidden>
+    <p class="view-intro">Where every fact in this guide comes from. The official names, descriptions and grades are as PlayStation publishes them, as listed by Exophase and PSNProfiles (the two agree on all 55). The how-to detail is drawn from the guides below and rewritten in our own words — never copied.</p>
+    <ul id="sourceList" class="sources"></ul>
+    <p class="fineprint">Two trophies are still unconfirmed in the sources as of 20 November 2026: Bad Luck, I Guess (PowerPyx: believed related to the Payday Loans store) and the exact animal for Fair Game. Their guides say so honestly instead of inventing a step.</p>
+  </section>
+</main>
+
+<footer>
+  <p>Leonida Trophy Guide — an offline, fan-made tracker. Not affiliated with Rockstar Games or PlayStation. No Rockstar logo, artwork or game screenshots are used. Progress is stored only in this browser (localStorage); export and import keep it yours.</p>
+</footer>
+
 <script type="module" src="app.js"></script>
 </body>
 </html>
